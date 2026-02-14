@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MBTI & 라이프스타일 드림카 테스트</title>
-    <!-- External Libraries (CDN) -->
+    <!-- 외부 라이브러리 (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -16,8 +16,6 @@
         .car-img-container::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent); }
         .step { transition: opacity 0.4s ease-in-out; }
         .hidden { display: none; opacity: 0; }
-        
-        /* Animation for call-to-action */
         .ad-glow { animation: ad-glow-pulse 2s infinite; }
         @keyframes ad-glow-pulse {
             0% { border-color: rgba(59, 130, 246, 0.2); }
@@ -30,11 +28,11 @@
 <body class="min-h-screen flex items-center justify-center p-4 md:p-8">
 
     <div id="app" class="max-w-3xl w-full bg-slate-900 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-800 flex flex-col">
-        <!-- Header Section -->
+        <!-- 헤더 섹션 -->
         <div class="p-8 md:p-10 text-center relative overflow-hidden">
             <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-            <h1 class="text-2xl md:text-4xl font-black mb-3 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-                🏎️ 내 성격에 딱 맞는 인생차 찾기
+            <h1 class="text-2xl md:text-4xl font-black mb-3 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 uppercase">
+                내 성격에 딱 맞는 인생차 찾기
             </h1>
             <p class="text-slate-300 font-medium text-sm md:text-base">
                 롤스로이스부터 반전의 '함정' 카드까지!<br class="sm:hidden"> 
@@ -42,57 +40,57 @@
             </p>
         </div>
 
-        <!-- Progress Bar -->
+        <!-- 프로그레스 바 -->
         <div class="w-full bg-slate-800 h-1.5">
             <div id="progress" class="bg-gradient-to-r from-blue-500 to-emerald-500 h-full transition-all duration-1000" style="width: 25%"></div>
         </div>
 
-        <!-- Step Containers -->
+        <!-- 스텝 컨테이너 -->
         <div class="p-6 md:p-12 flex-grow">
-            <!-- Step 1: MBTI Selection -->
+            <!-- Step 1: MBTI 선택 -->
             <div id="step-1" class="step">
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-xl md:text-2xl font-bold">1단계: 당신의 MBTI는?</h2>
-                    <span class="text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest">Step 01</span>
+                    <span class="text-slate-500 font-mono text-xs md:text-sm">Step 01</span>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4" id="mbti-grid"></div>
             </div>
 
-            <!-- Step 2: Age Range Selection -->
+            <!-- Step 2: 연령대 선택 -->
             <div id="step-2" class="step hidden">
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-xl md:text-2xl font-bold">2단계: 현재 연령대는?</h2>
-                    <span class="text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest">Step 02</span>
+                    <span class="text-slate-500 font-mono text-xs md:text-sm">Step 02</span>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" id="age-grid"></div>
             </div>
 
-            <!-- Step 3: Lifestyle -->
+            <!-- Step 3: 라이프스타일 선택 -->
             <div id="step-3" class="step hidden">
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-xl md:text-2xl font-bold">3단계: 현실 라이프스타일</h2>
-                    <span class="text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest">Step 03</span>
+                    <span class="text-slate-500 font-mono text-xs md:text-sm">Step 03</span>
                 </div>
                 <div class="space-y-8">
-                    <!-- Gender -->
+                    <!-- 성별 -->
                     <div>
-                        <p class="mb-4 text-slate-400 font-bold uppercase text-xs tracking-widest text-center sm:text-left">성별</p>
+                        <p class="mb-4 text-slate-400 font-bold text-xs tracking-widest uppercase">성별</p>
                         <div class="flex flex-col sm:flex-row gap-3">
                             <button onclick="setLifestyle('gender', 'male')" class="lifestyle-btn gender-btn flex-1 py-4 border-2 border-slate-800 rounded-2xl hover:border-blue-500 transition font-bold" id="gender-male">👨 남성 (Male)</button>
                             <button onclick="setLifestyle('gender', 'female')" class="lifestyle-btn gender-btn flex-1 py-4 border-2 border-slate-800 rounded-2xl hover:border-blue-500 transition font-bold" id="gender-female">👩 여성 (Female)</button>
                         </div>
                     </div>
-                    <!-- Home Ownership -->
+                    <!-- 주택 소유 -->
                     <div>
-                        <p class="mb-4 text-slate-400 font-bold uppercase text-xs tracking-widest text-center sm:text-left">내 집 마련 여부</p>
+                        <p class="mb-4 text-slate-400 font-bold text-xs tracking-widest uppercase">내 집 마련 여부</p>
                         <div class="flex flex-col sm:flex-row gap-3">
                             <button onclick="setLifestyle('home', true)" class="lifestyle-btn home-btn flex-1 py-4 border-2 border-slate-800 rounded-2xl hover:border-blue-500 transition font-bold" id="home-yes">🏠 내 집 보유</button>
                             <button onclick="setLifestyle('home', false)" class="lifestyle-btn home-btn flex-1 py-4 border-2 border-slate-800 rounded-2xl hover:border-blue-500 transition font-bold" id="home-no">🏢 주택 준비 중</button>
                         </div>
                     </div>
-                    <!-- Partner -->
+                    <!-- 동반자 -->
                     <div>
-                        <p class="mb-4 text-slate-400 font-bold uppercase text-xs tracking-widest text-center sm:text-left">동반자 유무</p>
+                        <p class="mb-4 text-slate-400 font-bold text-xs tracking-widest uppercase">동반자 유무</p>
                         <div class="flex flex-col sm:flex-row gap-3">
                             <button onclick="setLifestyle('partner', true)" class="lifestyle-btn partner-btn flex-1 py-4 border-2 border-slate-800 rounded-2xl hover:border-blue-500 transition font-bold" id="partner-yes">❤️ 연인/가족 있음</button>
                             <button onclick="setLifestyle('partner', false)" class="lifestyle-btn partner-btn flex-1 py-4 border-2 border-slate-800 rounded-2xl hover:border-blue-500 transition font-bold" id="partner-no">👤 싱글 라이프</button>
@@ -101,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- Step 4: Final Result -->
+            <!-- Step 4: 결과 화면 -->
             <div id="step-4" class="step hidden text-center">
                 <div id="result-container" class="opacity-0 transition-opacity duration-1000">
                     <div class="mb-8">
@@ -114,7 +112,11 @@
                         <div id="car-name" class="text-3xl md:text-5xl font-black text-white mb-8 tracking-tight"></div>
                         
                         <div class="car-img-container relative w-full aspect-video bg-slate-800 rounded-2xl mb-8 overflow-hidden border border-slate-700 shadow-inner">
-                             <img id="car-image" src="" alt="자동차 이미지" class="w-full h-full object-cover opacity-0 transition-opacity duration-1000" onerror="this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80'">
+                             <!-- 핵심 수정: referrerpolicy="no-referrer" 속성으로 네이버 보안 정책 우회 -->
+                             <img id="car-image" src="" alt="자동차 이미지" 
+                                  class="w-full h-full object-cover opacity-0 transition-opacity duration-1000" 
+                                  referrerpolicy="no-referrer"
+                                  onerror="this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80'">
                              <div id="image-loader" class="absolute inset-0 flex items-center justify-center bg-slate-800">
                                  <div class="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
                              </div>
@@ -129,14 +131,14 @@
                 </div>
             </div>
 
-            <!-- Navigation Buttons -->
+            <!-- 네비게이션 버튼 -->
             <div id="nav-btns" class="mt-8 flex justify-between items-center">
-                <button id="prev-btn" onclick="prevStep()" class="text-slate-500 font-bold hover:text-white invisible transition px-4 underline underline-offset-8 decoration-2">PREV</button>
+                <button id="prev-btn" onclick="prevStep()" class="text-slate-500 font-bold hover:text-white invisible transition px-4 underline underline-offset-8 decoration-2 uppercase">Back</button>
                 <button id="next-btn" onclick="nextStep()" class="px-10 md:px-14 py-4 md:py-5 bg-white text-slate-900 rounded-[1.2rem] font-black hover:bg-blue-400 hover:text-white disabled:bg-slate-800 disabled:text-slate-600 shadow-xl transition-all active:scale-95">다음 단계</button>
             </div>
         </div>
 
-        <!-- Coupang Partners Section -->
+        <!-- 쿠팡 파트너스 섹션 -->
         <div class="px-6 md:px-8 pb-10">
             <div class="bg-slate-800/40 rounded-3xl p-6 border-2 border-dashed border-slate-700 ad-glow text-center">
                 <div class="mb-4">
@@ -144,9 +146,10 @@
                     <p class="text-slate-400 text-xs md:text-sm italic">"새 차 사기 전, 이 아이템만큼은 꼭 챙기세요"</p>
                 </div>
                 
-                <div class="flex justify-center overflow-hidden rounded-xl bg-white p-2">
+                <div class="flex justify-center overflow-hidden rounded-xl bg-white p-2 shadow-inner">
                     <a href="https://link.coupang.com/a/dMAVnO" target="_blank" referrerpolicy="unsafe-url" class="block w-full">
-                        <img src="https://ads-partners.coupang.com/banners/965107?subId=&traceId=V0-301-c1744fa69c93f626-I965107&w=728&h=90" alt="쿠팡 배너" class="max-w-full h-auto inline-block">
+                        <!-- 광고 이미지에도 동일하게 referrerpolicy 적용 -->
+                        <img src="https://ads-partners.coupang.com/banners/965107?subId=&traceId=V0-301-c1744fa69c93f626-I965107&w=728&h=90" alt="쿠팡 배너" class="max-w-full h-auto inline-block" referrerpolicy="no-referrer">
                     </a>
                 </div>
                 
@@ -158,35 +161,37 @@
     </div>
 
     <script>
-        // 고도화된 자동차 데이터베이스 (Toyota 노출 빈도 개선 및 이미지 업데이트)
+        // 자동차 데이터베이스 (이미지 링크 및 가중치 정밀 조정)
         const carDatabase = [
-            // HYUNDAI
-            { brand: "HYUNDAI", name: "Grandeur", type: "Luxury Sedan", mbti: "ESTJ,ENTJ,ISTJ", age: [35, 65], luxury: 4, pref: "male", image: "https://i.ibb.co/7t9P81Gp/grandeur.jpg", desc: "대한민국 성공의 상징. 품격 있는 당신의 비즈니스와 우아한 일상을 완벽하게 연결해줄 최고의 럭셔리 세단입니다." },
+            // 현대자동차
+            { brand: "HYUNDAI", name: "Grandeur", type: "Sedan", mbti: "ESTJ,ENTJ,ISTJ", age: [35, 65], luxury: 4, pref: "male", image: "https://i.ibb.co/7t9P81Gp/grandeur.jpg", desc: "성공의 상징. 품격 있는 당신의 비즈니스와 우아한 일상을 완벽하게 연결해줄 럭셔리 세단입니다." },
             { brand: "HYUNDAI", name: "Ioniq 5", type: "EV", mbti: "ENTP,ENFP,INTP", age: [25, 50], luxury: 3, pref: "any", image: "https://i.ibb.co/ZQb29wp/ioniq5.jpg", desc: "미래를 앞당기는 기술력. 창의적인 당신의 라이프스타일에 맞춘 혁신적인 거주 공간을 제공합니다." },
-            { brand: "HYUNDAI", name: "Porter II", type: "Truck", mbti: "ISTJ,ESTJ,ISTP", age: [25, 65], luxury: 1, pref: "male", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTYz/MDAxNzcxMDc2NDcxNTA5.Rue9H_ai6UW4kMxl7yn3QWk1jr_MU-WSaOQJ0Nd8ct8g.s_y7bNxyrxlaqKEbDRqgzyfe13pVLId-eNfcX6xU2E8g.JPEG/porter2.jpg?type=w773", desc: "삶의 현장에서 가장 빛나는 당신. 땀의 가치를 아는 당신을 위한 대한민국 최고의 비즈니스 파트너입니다." },
+            { brand: "HYUNDAI", name: "Porter II", type: "Truck", mbti: "ISTJ,ESTJ,ISTP", age: [25, 65], luxury: 1, pref: "male", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTYz/MDAxNzcxMDc2NDcxNTA5.Rue9H_ai6UW4kMxl7yn3QWk1jr_MU-WSaOQJ0Nd8ct8g.s_y7bNxyrxlaqKEbDRqgzyfe13pVLId-eNfcX6xU2E8g.JPEG/porter2.jpg?type=w773", desc: "삶의 현장에서 가장 빛나는 당신. 땀의 가치를 아는 당신을 위한 대한민국 최고의 파트너입니다." },
             { brand: "HYUNDAI", name: "Tucson", type: "SUV", mbti: "ENFJ,ESFJ,ISFP", age: [25, 55], luxury: 3, pref: "any", image: "https://i.ibb.co/B8L6vBV/tucson.jpg", desc: "모든 길을 아우르는 균형. 활동적인 당신의 라이프스타일에 가장 적합한 트렌디한 SUV입니다." },
             { brand: "HYUNDAI", name: "Avante", type: "Sedan", mbti: "ISFP,ENFP,ESFP", age: [20, 45], luxury: 2, pref: "female", image: "https://i.ibb.co/Y7Kvjbnf/avante.jpg", desc: "세련된 도시인의 데일리 카. 스마트한 가치와 스타일을 동시에 잡고 싶은 당신에게 안성맞춤입니다." },
             
-            // KIA
-            { brand: "KIA", name: "Bongo III", type: "Truck", mbti: "ISTJ,ESTJ,ISTP", age: [25, 65], luxury: 1, pref: "male", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNzkg/MDAxNzcxMDc0ODAyNDE3.z5w10javZP3MnKjfj3HvOD2iPrtjhmLYpEAUmwMrQhQg._ljE03SsGXn10WUmC2UwzKwRyULHDqsDAzKAmKTy2VMg.JPEG/bongotop.jpg?type=w773", desc: "신속함과 신뢰의 상징. 계획적인 당신의 성공 가도를 함께 달리는 든든한 일꾼입니다." },
-            { brand: "KIA", name: "Carnival", type: "MPV", mbti: "ESFJ,ENFJ,ISFJ", age: [30, 65], luxury: 3, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTYx/MDAxNzcxMDc0ODAyMDUw.U37FUFNsIxjktazembaaSh_NMIBCulc17eoN3kkt5v4g.fl6_ooBfPRYw3kh4T0Tud85QQ6udmCNbCpJAGUqjpdIg.JPEG/carnival.jpg?type=w773", desc: "함께라서 더 즐거운 여정. 소중한 사람들과의 시간을 최우선으로 생각하는 당신을 위한 최적의 공간입니다." },
+            // 기아자동차
+            { brand: "KIA", name: "Bongo III", type: "Truck", mbti: "ISTJ,ESTJ,ISTP", age: [25, 65], luxury: 1, pref: "male", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNzkg/MDAxNzcxMDc0ODAyNDE3.z5w10javZP3MnKjfj3HvOD2iPrtjhmLYpEAUmwMrQhQg._ljE03SsGXn10WUmC2UwzKwRyULHDqsDAzKAmKTy2VMg.JPEG/bongotop.jpg?type=w773", desc: "신속함과 신뢰의 상징. 계획적인 당신의 성공 가도를 함께 달리는 든든한 파트너입니다." },
+            { brand: "KIA", name: "Carnival", type: "MPV", mbti: "ESFJ,ENFJ,ISFJ", age: [30, 65], luxury: 3, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTYx/MDAxNzcxMDc0ODAyMDUw.U37FUFNsIxjktazembaaSh_NMIBCulc17eoN3kkt5v4g.fl6_ooBfPRYw3kh4T0Tud85QQ6udmCNbCpJAGUqjpdIg.JPEG/carnival.jpg?type=w773", desc: "함께라서 더 즐거운 여정. 소중한 사람들과의 시간을 최우선으로 생각하는 당신을 위한 공간입니다." },
             { brand: "KIA", name: "Ray", type: "Compact", mbti: "INFP,ENTP,ISFP,ESFP", age: [20, 50], luxury: 1, pref: "female", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfOTUg/MDAxNzcxMDc0ODAyMjYw.GL1mhNHUbs1gelUzfgmVnSiDHhnZpNSZXQpDr_FJX6Ig.padVU8J0uBX5E3NynIl2ft1Q6qLd5JHcnX-Eq7eK9YQg.JPEG/ray.jpg?type=w773", desc: "박스를 넘은 상상력. 작지만 넓은 공간처럼 당신의 무궁무진한 가능성을 담아낼 수 있는 박스카입니다." },
-            { brand: "KIA", name: "Sorento", type: "SUV", mbti: "ESFJ,ENFJ,INFJ,ENTJ", age: [30, 60], luxury: 4, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMjQ2/MDAxNzcxMDc0ODAyMzI3.1ViDpYZwc7Psk3K1GmokI4PxuYW8DvmAmB2h0mUvA8Yg.IKU83AACMqpIWF2lzgODifQhKF587dNOkIertIyesekg.JPEG/sorento.jpg?type=w773", desc: "압도적인 신뢰의 스테디셀러. 탄탄한 주행 성능과 세련미로 당신의 품격을 높여주는 국민 SUV입니다." },
+            { brand: "KIA", name: "Sorento", type: "SUV", mbti: "ESFJ,ENFJ,INFJ,ENTJ", age: [30, 60], luxury: 4, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMjQ2/MDAxNzcxMDc0ODAyMzI3.1ViDpYZwc7Psk3K1GmokI4PxuYW8DvmAmB2h0mUvA8Yg.IKU83AACMqpIWF2lzgODifQhKF587dNOkIertIyesekg.JPEG/sorento.jpg?type=w773", desc: "압도적인 신뢰의 스테디셀러. 탄탄한 주행 성능과 세련미로 당신의 품격을 높여주는 SUV입니다." },
             
-            // TOYOTA (Updated with requested links)
+            // 토요타 (Toyota - RAV4 포함)
             { brand: "TOYOTA", name: "RAV4", type: "SUV", mbti: "ISFJ,ESFJ,INFJ,ISTJ,INFP", age: [25, 65], luxury: 2, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTk2/MDAxNzcxMDc2NDcxNTAw.e9to-Lg_MUj4k6PX2hT9avYcEw-ZiZuUBOY-VRbabiUg.JCd0tZA1s-Owew38MPuhGgvPwpa9RjvGoDin-WdHVdAg.JPEG/rav4.jpg?type=w773", desc: "정숙함 속의 강력함. 안정적이고 평화로운 일상을 추구하는 당신의 신념을 지켜줄 안전한 SUV입니다." },
-            { brand: "TOYOTA", name: "Camry", type: "Sedan", mbti: "ISTJ,ESTJ,INTJ,ISFJ,ENTJ", age: [30, 65], luxury: 3, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTky/MDAxNzcxMDc2NDcxNDcx.EcCevsJDb1mZuq85DUqiqpCGs-pDh77a8lrAGfHWulkg.IZVHtbWvPfTuca9xIBwjQgF9oFkDnXgMYDONDuR1zzog.JPEG/camry.jpg?type=w773", desc: "합리적 선택의 기준. 유행에 흔들리지 않고 본질적인 가치를 소중히 여기는 당신에게 완벽한 해답입니다." },
+            { brand: "TOYOTA", name: "Camry", type: "Sedan", mbti: "ISTJ,ESTJ,INTJ,ISFJ,ENTJ", age: [30, 65], luxury: 3, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTky/MDAxNzcxMDc2NDcxNDcx.EcCevsJDb1mZuq85DUqiqpCGs-pDh77a8lrAGfHWulkg.IZVHtbWvPfTuca9xIBwjQgF9oFkDnXgMYDONDuR1zzog.JPEG/camry.jpg?type=w773", desc: "합리적 선택의 기준. 본질적인 가치를 소중히 여기는 당신에게 정답이 될 우수한 세단입니다." },
             { brand: "TOYOTA", name: "Prius", type: "Hybrid", mbti: "INFJ,INFP,ENFP,INTP,ENTP", age: [20, 60], luxury: 2, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTc1/MDAxNzcxMDc2NDcxOTYy.jhLzhBBtDVDBNj59DvBP-wwRjkQNtBIUi_i6M0WaUxAg.2_pGJsCq9fTksi2DzeR2L3Hci09AAt_nUmX3bVZpmukg.JPEG/prius.jpg?type=w773", desc: "미래를 생각하는 따뜻한 시선. 환경을 아끼는 당신의 철학을 완성해주는 지적인 하이브리드 카입니다." },
-            { brand: "TOYOTA", name: "Highlander", type: "SUV", mbti: "ISFJ,ESFJ,INFJ,ENFJ,ESTJ", age: [30, 65], luxury: 4, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNjQg/MDAxNzcxMDc2NDcxOTYw.P5w2yqNNzGIU-t61QY9wYAWzqV_h4h5l6M3rHjsjzBkg.x5LYogFxDZPBodA3bcXhLeiyPfBz71aYmZMmI5SAXOQg.JPEG/highlander.jpg?type=w773", desc: "다정한 리더의 넉넉한 공간. 당신이 아끼는 사람들과 가장 조용하고 편안하게 대화할 수 있는 SUV입니다." },
+            { brand: "TOYOTA", name: "Highlander", type: "SUV", mbti: "ISFJ,ESFJ,INFJ,ENFJ,ESTJ", age: [30, 65], luxury: 4, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNjQg/MDAxNzcxMDc2NDcxOTYw.P5w2yqNNzGIU-t61QY9wYAWzqV_h4h5l6M3rHjsjzBkg.x5LYogFxDZPBodA3bcXhLeiyPfBz71aYmZMmI5SAXOQg.JPEG/highlander.jpg?type=w773", desc: "다정한 리더의 넉넉한 공간. 당신이 아끼는 사람들과 가장 편안하게 소통할 수 있는 프리미엄 SUV입니다." },
             
-            // BMW & BENZ & LUXURY
+            // 수입차 명차 (S-Class 최신 반영)
             { brand: "BMW", name: "3 Series", type: "Sport Sedan", mbti: "ESTP,ENTP,ISTP", age: [20, 50], luxury: 4, pref: "male", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTc0/MDAxNzcxMDc0ODAxNDQx.JDpUriL-uqpLkppTxK9FHuXgSlBmKci-lJH7x2GUMlUg.abXi7cledEEgPTNwBqRay08c5_4W7w3iBvIOp_ajkvcg.JPEG/bmw3.jpg?type=w773", desc: "드라이빙의 정석. 역동적이고 논리적인 당신의 질주 본능을 만족시킬 완벽한 핸들링을 선사합니다." },
             { brand: "MERCEDES-BENZ", name: "GLB 250", type: "Compact SUV", mbti: "ISFJ,ESFJ,ENFP,ISFP", age: [25, 55], luxury: 4, pref: "female", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMTc0/MDAxNzcxMDc0ODAxNDI3.bQazVu13Qnu1K3WvezbiqJrCE-WduaqraB6qnItKXxgg.TdAzS7aveM_wtpaxcqcb9JBcmXLLzM1tgatx6ZYu0Dsg.JPEG/glb.jpg?type=w773", desc: "세련된 럭셔리와 실용성의 조화. 다채로운 매력을 지닌 당신의 일상을 더욱 아름답게 장식해줄 SUV입니다." },
             { brand: "MERCEDES-BENZ", name: "S-Class", type: "Luxury Sedan", mbti: "ENTJ,INTJ,INFJ,ESTJ", age: [40, 65], luxury: 5, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMzUg/MDAxNzcxMDc0ODAxNDQ3.bGOyQ0S39TtqqangSRXs22MpKg3YGWYwbB61zAh9LaAg.XnzhCje0O1sH6O1_Q0nbRR89oj6wthTBcCJ4bjtkPbkg.JPEG/sclass.jpg?type=w773", desc: "최고가 아니면 만들지 않는다. 정점에 도달한 당신의 품격과 위엄을 증명하는 단 하나의 선택입니다." },
-            { brand: "MINI", name: "Cooper", type: "Compact", mbti: "ENFP,ESFP,ISFP,ENTP", age: [20, 40], luxury: 3, pref: "female", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfOTQg/MDAxNzcxMDc2MjA4MDk5.NdEaMbM707zk9mxb4VP9ufuqTh5p_Ii60t8oDdAd8jkg.hA2IvIWt0RTBX74nQCvZS1ND75rpN7__hFE0ZgQwwQIg.JPEG/mini.jpg?type=w773", desc: "개성이 곧 당신의 이름. 아이코닉한 디자인으로 도로 위 모든 시선을 사로잡는 가장 감각적인 파트너입니다." },
-            { brand: "TESLA", name: "Model Y", type: "EV", mbti: "ENTP,INTJ,INTP,ENTJ", age: [25, 55], luxury: 4, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMjcz/MDAxNzcxMDc2MjA4MDg2.9sDpqcAdz0joU53UjrKRcbTQn3z-nUd-57aundE4Wmwg.7L5btj_1ermaMyLfsPGZVDf8D4S3xULgdjjEYimEJMog.JPEG/modely.jpg?type=w773", desc: "변화를 이끄는 개척자. 앞선 테크놀로지를 즐기는 당신의 지적 유희를 충족시켜줄 혁신적인 전기 SUV입니다." },
-            { brand: "ROLLS-ROYCE", name: "Phantom", type: "Ultra Luxury", mbti: "INTJ,ENTJ", age: [50, 65], luxury: 5, pref: "male", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNjgg/MDAxNzcxMDc1OTAzODUz.lhcNFr6leqfQ8UOhM9X89abhXdeHsSpHHaP6Ap9AOd8g.SiWXoXPim0df3bauZfh6CB4KxSVZND61llQoJeq3jIYg.JPEG/rolls.jpg?type=w773", desc: "도로 위의 궁전. 당신의 모든 발걸음이 역사가 됩니다. 세상의 경외심을 한 몸에 받는 성공의 최종 단계입니다." },
-            { brand: "TATA", name: "Tiago", type: "Trap", mbti: "INTP,INFP", age: [20, 30], luxury: 0, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNjYg/MDAxNzcxMDc1OTAzODcw.gk3upQaSEHHVPfI-I1GJZ-hE7G68Ng5YBWnqIdGGpi8g.TM75XBpT72AINfI7hfUPfyiS3evTAHVU8vlh4ZlrdFsg.JPEG/tata_tiago.jpg?type=w773", desc: "앗! '함정' 카드에 당첨되셨군요. 세상에서 가장 미니멀한 이동수단, 티아고와 함께 엉뚱하고 소박한 여행을 떠나볼까요? 😂" }
+            { brand: "MINI", name: "Cooper", type: "Compact", mbti: "ENFP,ESFP,ISFP,ENTP", age: [20, 40], luxury: 3, pref: "female", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfOTQg/MDAxNzcxMDc2MjA4MDk5.NdEaMbM707zk9mxb4VP9ufuqTh5p_Ii60t8oDdAd8jkg.hA2IvIWt0RTBX74nQCvZS1ND75rpN7__hFE0ZgQwwQIg.JPEG/mini.jpg?type=w773", desc: "개성이 곧 이름인 당신. 아이코닉한 디자인으로 도로 위 시선을 사로잡는 감각적인 아이콘입니다." },
+            { brand: "TESLA", name: "Model Y", type: "EV", mbti: "ENTP,INTJ,INTP,ENTJ", age: [25, 55], luxury: 4, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfMjcz/MDAxNzcxMDc2MjA4MDg2.9sDpqcAdz0joU53UjrKRcbTQn3z-nUd-57aundE4Wmwg.7L5btj_1ermaMyLfsPGZVDf8D4S3xULgdjjEYimEJMog.JPEG/modely.jpg?type=w773", desc: "변화를 주도하는 혁신가. 앞선 기술을 즐기는 당신의 지적 유희를 충족시켜줄 미래형 전기 SUV입니다." },
+            
+            // 함정 & 초럭셔리
+            { brand: "TATA", name: "Tiago", type: "Trap", mbti: "INTP,INFP", age: [20, 30], luxury: 0, pref: "any", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNjYg/MDAxNzcxMDc1OTAzODcw.gk3upQaSEHHVPfI-I1GJZ-hE7G68Ng5YBWnqIdGGpi8g.TM75XBpT72AINfI7hfUPfyiS3evTAHVU8vlh4ZlrdFsg.JPEG/tata_tiago.jpg?type=w773", desc: "앗! '함정' 카드에 당첨되셨군요. 세상에서 가장 미니멀한 이동수단, 티아고와 함께 엉뚱한 여행을 떠나볼까요? 😂" },
+            { brand: "ROLLS-ROYCE", name: "Phantom", type: "Ultra Luxury", mbti: "INTJ,ENTJ", age: [50, 65], luxury: 5, pref: "male", image: "https://postfiles.pstatic.net/MjAyNjAyMTRfNjgg/MDAxNzcxMDc1OTAzODUz.lhcNFr6leqfQ8UOhM9X89abhXdeHsSpHHaP6Ap9AOd8g.SiWXoXPim0df3bauZfh6CB4KxSVZND61llQoJeq3jIYg.JPEG/rolls.jpg?type=w773", desc: "도로 위의 절대 권력. 당신의 모든 발걸음이 역사가 되는 순간, 팬텀이 그 위엄을 완성합니다." }
         ];
 
         const mbtiEmojis = {
@@ -202,7 +207,7 @@
             const mbtiGrid = document.getElementById('mbti-grid');
             Object.keys(mbtiEmojis).forEach(type => {
                 const btn = document.createElement('button');
-                btn.className = "mbti-btn py-4 md:py-5 border-2 border-slate-800 rounded-2xl font-black text-sm md:text-lg transition-all bg-slate-800/50 hover:border-blue-500 flex flex-col items-center justify-center gap-1";
+                btn.className = "mbti-btn py-4 md:py-5 border-2 border-slate-800 rounded-2xl font-black text-sm md:text-lg transition-all bg-slate-800/50 hover:border-blue-500 flex flex-col items-center justify-center gap-1 active:scale-95";
                 btn.innerHTML = `<span class="text-xl md:text-2xl">${mbtiEmojis[type]}</span><span class="text-xs md:text-base">${type}</span>`;
                 btn.onclick = () => { 
                     currentState.mbti = type; 
@@ -216,7 +221,7 @@
             const ageGrid = document.getElementById('age-grid');
             for (let age = 20; age <= 60; age += 5) {
                 const btn = document.createElement('button');
-                btn.className = "age-btn py-4 border-2 border-slate-800 rounded-2xl font-bold transition-all bg-slate-800/50 hover:border-blue-500 text-sm md:text-base";
+                btn.className = "age-btn py-4 border-2 border-slate-800 rounded-2xl font-bold transition-all bg-slate-800/50 hover:border-blue-500 text-sm md:text-base active:scale-95";
                 btn.innerText = `${age}대${age === 60 ? '+' : ''}`;
                 btn.onclick = () => { 
                     currentState.age = age; 
@@ -244,7 +249,7 @@
             else if (currentState.step === 2) { nextBtn.disabled = !currentState.age; prevBtn.classList.remove('invisible'); }
             else if (currentState.step === 3) { 
                 nextBtn.disabled = (currentState.home === null || currentState.partner === null || currentState.gender === null); 
-                nextBtn.innerText = "내 인생차 확인하기"; 
+                nextBtn.innerText = "결과 확인하기"; 
             }
         }
 
@@ -264,19 +269,19 @@
         function showResult() {
             let scores = carDatabase.map(car => {
                 let score = 0;
-                // 1. MBTI Matching (50pts)
+                // 1. MBTI 일치도 (50점)
                 if (car.mbti.includes(currentState.mbti)) score += 50;
-                // 2. Age Matching (30pts)
+                // 2. 연령대 적합성 (30점)
                 if (currentState.age >= car.age[0] && currentState.age <= car.age[1]) score += 30;
-                // 3. Gender (20pts) - "any"를 18점으로 설정하여 범용 차량 경쟁력 확보
+                // 3. 성별 선호도 (20점)
                 if (car.pref === currentState.gender) score += 20;
                 else if (car.pref === "any") score += 18;
-                // 4. EV Preference (Home)
-                if (currentState.home && car.type === "EV") score += 10;
-                // 5. Luxury Synergy
-                if (currentState.home && currentState.age >= 45 && car.luxury >= 5) score += 10;
-                // 6. Tie-breaker (Random 1-10pts) - 결과의 다양성 및 토요타 등 골고루 노출
-                score += Math.floor(Math.random() * 10);
+                // 4. 주거 환경 (충전기 유무)
+                if (currentState.home && car.type === "EV") score += 12;
+                // 5. 럭셔리 포인트
+                if (currentState.home && currentState.age >= 45 && car.luxury >= 5) score += 15;
+                // 6. 무작위 편차 (결과의 다양성 및 Toyota 빈도 확보)
+                score += Math.floor(Math.random() * 12);
                 
                 return { ...car, score };
             });
@@ -285,17 +290,23 @@
             const best = scores[0];
 
             document.getElementById('result-mbti-tag').innerText = 
-                `${mbtiEmojis[currentState.mbti]} ${currentState.mbti} 성향 / ${currentState.age}대 / ${currentState.gender === 'male' ? '남성' : '여성'}`;
+                `${mbtiEmojis[currentState.mbti]} ${currentState.mbti} 타입 / ${currentState.age}대 / ${currentState.gender === 'male' ? '남성' : '여성'}`;
             document.getElementById('car-brand').innerText = best.brand;
             document.getElementById('car-name').innerText = best.name;
             document.getElementById('car-desc').innerText = best.desc;
 
             const carImg = document.getElementById('car-image');
             const loader = document.getElementById('image-loader');
+            
             carImg.style.opacity = '0';
             loader.classList.remove('hidden');
+            
+            // 이미지 주소 변경 시 핫링크 우회 적용
             carImg.src = best.image;
-            carImg.onload = () => { carImg.style.opacity = '1'; loader.classList.add('hidden'); };
+            carImg.onload = () => { 
+                carImg.style.opacity = '1'; 
+                loader.classList.add('hidden'); 
+            };
 
             goToStep(4);
             setTimeout(() => document.getElementById('result-container').classList.remove('opacity-0'), 100);
